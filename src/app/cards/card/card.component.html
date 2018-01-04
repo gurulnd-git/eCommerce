@@ -1,0 +1,58 @@
+<div class="thumbnail">
+  <img src="assets/images/{{ product.image }}.jpg" alt="product thumbnail">
+
+<div class="caption">
+  <div *ngIf="!product.showDetails">
+    <h4>
+      <span class="label label-primary">
+        {{ product.type }}
+      </span>
+    </h4>
+    <h3>
+      <i class="glyphicon glyphicon-tag"></i> 
+        {{ product.price | currency:'USD':true }}
+    </h3>
+    <h4>
+      <i class="glyphicon glyphicon-home"></i> 
+        {{ product.address }}
+    </h4>
+
+    <hr>
+
+    <button 
+      class="btn btn-sm btn-success"
+      *ngIf="!product.showDetails"
+      (click)="product.showDetails = !product.showDetails">
+      Details
+    </button>
+
+  </div>
+
+  <div *ngIf="product.showDetails">
+    <div class="details">
+      <h4>
+        <span class="label label-primary">
+          Beds: {{ product.bedrooms }}
+        </span>
+        <span class="label label-primary">
+          Baths: {{ product.bathrooms }}
+        </span>
+        <span class="label label-primary">
+          SqFt: {{ product.area }}
+        </span>
+      </h4>
+
+      <p>{{ product.description }}</p>
+
+      <hr>
+
+      <button
+        class="btn btn-sm btn-danger"
+        (click)="product.showDetails = !product.showDetails">
+        Close
+      </button>
+
+    </div>
+  </div>
+</div>
+</div>
